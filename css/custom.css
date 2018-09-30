@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.extend {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.callToFront{
+  z-index:1000;
+}
+
+.shadow{
+   box-shadow: 10px 10px 5px grey;
+}
+
+.sombra{
+  text-shadow: 2px 2px black;
+}
