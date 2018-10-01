@@ -13,6 +13,23 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+
+// sql to create users table
+$sql = "CREATE TABLE julio_users (
+user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+login VARCHAR(12) NOT NULL UNIQUE,
+password VARCHAR(12) NOT NULL,
+avatar   VARCHAR(32) NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo " Table Users created successfully";
+} else {
+    echo " Error creating table: " . $conn->error;
+}
+
+
+
 // sql to create news table
 $sql = "CREATE TABLE julio_noticias (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -30,20 +47,6 @@ FOREIGN KEY fk_user(user_id)
 
 if ($conn->query($sql) === TRUE) {
     echo " Table Noticias created successfully";
-} else {
-    echo " Error creating table: " . $conn->error;
-}
-
-// sql to create users table
-$sql = "CREATE TABLE julio_users (
-user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-login VARCHAR(12) NOT NULL,
-password VARCHAR(12) NOT NULL,
-photo   longblob NOT NULL
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo " Table Users created successfully";
 } else {
     echo " Error creating table: " . $conn->error;
 }
