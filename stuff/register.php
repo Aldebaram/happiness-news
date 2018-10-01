@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+session_start();
+echo $_SESSION;
+if($_SESSION['login']==true){
+header("location:../index.php");
+}else{
+ // keep the flow
+}
+?>
  <html>
  <!-- Page Header -->
    <head>
@@ -12,18 +21,41 @@
 
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   </head>"
-   
+   </head>
+
 <?php ?>
-<!-- Materialize Navbar -->
-<nav class="callToFront">
+<?php
+ $unlogbar = '<!-- Materialize Navbar -->
+ <nav class="callToFront">
     <div class="nav-wrapper indigo">
       <a href="../index.php" class="brand-logo">Happy News</a>
       <ul id="nav-mobile" class="right ">
-        <li><a href="login.php">Login<i class="material-icons right">description</i></a></li>
+        <li><a href="stuff/login.php">Login<i class="material-icons right">description</i></a></li>
+        <li><a href="stuff/register.php">Register<i class="material-icons right">create</i></a></li>
       </ul>
     </div>
-  </nav>
+  </nav>';
+
+  $logbar = '<!-- Materialize Navbar -->
+  <nav class="callToFront">
+     <div class="nav-wrapper indigo">
+       <a href="../index.php" class="brand-logo">Happy News</a>
+       <ul id="nav-mobile" class="right ">
+         <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
+         <li><a href="stuff/logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
+       </ul>
+     </div>
+   </nav>';
+
+
+
+   if($_SESSION['login']==true){
+   echo $logbar; //shows the navbar if theres a user on session.
+   }else{
+    echo $unlogbar; //shows the bar is no user in session.
+   }
+
+?>
 
 
 

@@ -7,6 +7,7 @@ header("location:../index.php");
  // keep the flow
 }
 ?>
+
  <html>
    <!-- Page Header -->
    <head>
@@ -21,7 +22,39 @@ header("location:../index.php");
    </head>
 
 
-<?php ?>
+<?php
+include 'datalogin.php'; // DB login info
+
+$user = $_POST['user'];
+$pass  = $_POST['password'];
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+$getUser = "SELECT user_id,login,avatar  FROM julio_users WHERE login='$user' AND password='$pass';";
+      if ($resultado = $conn->query($getUser)) {
+      $row = $resultado->fetch_assoc();
+      $avatar = $row["avatar"];
+      $id = $row["user_id"];
+      if($id==""){
+      unset($_SESSION['user_id']);
+      unset($_SESSION['user']);
+      unset($_SESSION['avatar']);
+      unset($_SESSION['login']);
+      $failed = true;
+    }
+    else{
+      $_SESSION['user_id'] = $id;
+      $_SESSION['avatar'] = $avatar;
+      $_SESSION['user'] = $user;
+      $_SESSION['login'] = true;
+      $failed = false;
+    }
+    //SQL ERROR CONDITION
+  }
+
+  $conn->close();
+?>
 <?php
  $unlogbar = '<!-- Materialize Navbar -->
  <nav class="callToFront">
@@ -56,44 +89,64 @@ header("location:../index.php");
 ?>
 
 <!-- Page Body -->
+<?php
+if($failed==FALSE){
+echo "
 <body>
 
   <main>
   <br>
 
-  <div class="row">
-    <div class="container s12" >
-    <div class="card hoverable">
-    <div class="card-content">
-    <span class="card-title">User Login</span>
-    <div class="row">
-    <form id="form" class="col s12" action="loginPost.php" enctype="form-data" method="POST" >
-        <div class="input-field col s6 offset-s3">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="user" name="user" type="text" class="validate black-text">
-          <label for="user">User Name</label>
-        </div>
-        <div class="input-field col s6 offset-s3">
-          <i class="material-icons prefix">https</i>
-          <input id="password" name="password" type="password" class="validate black-text">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div onclick="loading()">
-      <button  value="Upload" class="btn waves-effect waves-light" type="submit" name="submit">Login
-        <i class="material-icons right">send</i>
-        </div>
-      </button>
-     </form>
+  <div class=\"row\">
+    <div class=\"container s12\" >
+    <div class=\"card hoverable\">
+    <div class=\"card-content\">
+    <span class=\"card-title\">Login Successful!</span>
+    <div class=\"row\">
+    <img src=\"$avatar\" class=\"circle\" style=\"margin:height: 100px; width: 100px;\" />
+    <h4>$user</h4>
+</a>
+
     </div>
-   </div>
-   <div id="second">
+    <div id=\"second\">
+    </div>
    </div>
   </div>
     </div>
     </div>
   </main>
-     </body>"
+     </body>";
+   }else{
+     echo "
+     <body>
+
+       <main>
+       <br>
+
+       <div class=\"row\">
+         <div class=\"container s12\" >
+         <div class=\"card hoverable\">
+         <div class=\"card-content\">
+         <span class=\"card-title\">Login Failed!</span>
+         <div class=\"row\">
+
+         <h4>User or password are wrong!</h4>
+     </a>
+
+         </div>
+         <div id=\"second\">
+         </div>
+        </div>
+       </div>
+         </div>
+         </div>
+       </main>
+          </body>";
+
+
+
+     }
+     ?>
 
 <!-- Page Footer -->
 <footer class="page-footer indigo callToFront">
