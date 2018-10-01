@@ -35,10 +35,10 @@ echo  "<body>
 <main>
 
 <div class=\"row\">
-  <div class=\"container s12\">
+  <div class=\"container s12\" >
 
 
-<div class=\"card\">
+<div class=\"card hoverable\">
   <div class=\"card-image\">
     <div style=\"overflow:hidden;\">
      <img src=\"https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX5338988.jpg\" style=\"margin:-30% 0px -20% 0px;\" />
