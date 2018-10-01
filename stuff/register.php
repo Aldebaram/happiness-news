@@ -109,5 +109,7 @@ echo  "<body>
         </footer>
         <!-- Load materialize javascript-->
         <script type=\"text/javascript\" src=\"../js/materialize.min.js\"></script>
+        <!-- Load myjavascript-->
+        <script type=\"text/javascript\" src=\"../js/script.js\"></script>
  </html>";
 ?>
