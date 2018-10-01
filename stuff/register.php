@@ -46,45 +46,34 @@ echo  "<body>
     <span class=\"card-title sombra\">Register</span>
   </div>
   <div class=\"card-content\">
-  <img src=\"http://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png\" class=\"cirlce\" style=\"margin:height: 100px; width: 100px;\" />
   <div class=\"row\">
-  <form class=\"col s12\">
-  <div class=\"file-field input-field\">
-      <div class=\"btn\">
-        <span>User Image</span>
-        <input type=\"file\">
-      </div>
-      <div class=\"file-path-wrapper\">
-        <input class=\"file-path validate\" type=\"text\">
-      </div>
-    </div>
+  <form id=\"form\" class=\"col s12\" action=\"registerDB.php\" enctype=\"multipart/form-data\" method=\"POST\" >
+  <a class=\"black-text\">Avatar: </a><input name=\"img\" size=\"35\" type=\"file\" class=\"\" /><br/>
     <div class=\"row\">
       <div class=\"input-field col s6\">
         <i class=\"material-icons prefix\">account_circle</i>
-        <input id=\"icon_prefix\" type=\"text\" class=\"validate black-text\">
-        <label for=\"icon_prefix\">User Name</label>
+        <input id=\"user\" name=\"user\" type=\"text\" class=\"validate black-text\">
+        <label for=\"user\">User Name</label>
       </div>
       <div class=\"input-field col s6\">
         <i class=\"material-icons prefix\">https</i>
-        <input id=\"icon_telephone\" type=\"password\" class=\"validate black-text\">
-        <label for=\"icon_telephone\">Password</label>
+        <input id=\"password\" name=\"password\" type=\"password\" class=\"validate black-text\">
+        <label for=\"password\">Password</label>
       </div>
     </div>
-  </form>
+    <div onclick=\"loading()\">
+    <button  value=\"Upload\" class=\"btn waves-effect waves-light\" type=\"submit\" name=\"submit\">Register
+      <i class=\"material-icons right\">send</i>
+      </div>
+    </button>
+   </form>
+  </div>
+ </div>
+ <div id=\"second\">
+ </div>
 </div>
   </div>
-  <div class=\"card-action\">
-    <a href=\"#\">This is a link</a>
   </div>
-</div>
-
-
-
-
-
-  </div>
-  </div>
-
 </main>
    </body>";
 
