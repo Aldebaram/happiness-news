@@ -1,14 +1,10 @@
 <?php
+//MySQL Database Connect include 'datalogin.php';
+include 'datalogin.php';
 //receive the register information.
 $user = $_POST['user'];
 $pass  = $_POST['password']; //as this is a project not intended for production I will not implement a hash to store de password
 $avatar = $_FILES['img'];
-
-//MySQL database connection information
-$servername = "127.0.0.1";
-$username = "root";
-$password = "happynews";
-$dbname = "myDB";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

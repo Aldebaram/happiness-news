@@ -1,9 +1,6 @@
 <?php
-//MySQL database connection information
-$servername = "127.0.0.1";
-$username = "root";
-$password = "happynews";
-$dbname = "myDB";
+//MySQL Database Connect include 'datalogin.php';
+include 'datalogin.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
