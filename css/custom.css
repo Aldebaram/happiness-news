@@ -24,3 +24,10 @@ main {
 .sombra{
   text-shadow: 2px 2px black;
 }
+
+.wrapper{
+  position:relative;
+}
+.bottom{
+  position:absolute; bottom:0;
+}
