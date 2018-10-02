@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if($_SESSION['login']==true){
+if($_SESSION['login']==true){// check if user is logged
 header("location:../index.php");
 }else{
  // keep the flow
@@ -28,8 +28,8 @@ header("location:../index.php");
     <div class="nav-wrapper indigo">
       <a href="../index.php" class="brand-logo">Happy News</a>
       <ul id="nav-mobile" class="right ">
-        <li><a href="stuff/login.php">Login<i class="material-icons right">description</i></a></li>
-        <li><a href="stuff/register.php">Register<i class="material-icons right">create</i></a></li>
+        <li><a href="login.php">Login<i class="material-icons right">description</i></a></li>
+        <li><a href="register.php">Register<i class="material-icons right">create</i></a></li>
       </ul>
     </div>
   </nav>';
@@ -39,8 +39,8 @@ header("location:../index.php");
      <div class="nav-wrapper indigo">
        <a href="../index.php" class="brand-logo">Happy News</a>
        <ul id="nav-mobile" class="right ">
-         <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
-         <li><a href="stuff/logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
+         <li><a href="create.php">Create New!<i class="material-icons right">drafts</i></a></li>
+         <li><a href="logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
        </ul>
      </div>
    </nav>';

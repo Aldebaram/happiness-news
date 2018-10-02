@@ -43,7 +43,7 @@ session_start();
 
 
 
-   if($_SESSION['login']==true){
+   if($_SESSION['login']==true){// check if user is logged
    echo $logbar; //shows the navbar if theres a user on session.
    }else{
     echo $unlogbar; //shows the bar is no user in session.
