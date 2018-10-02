@@ -31,12 +31,12 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE julio_noticias (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 user_id INT(6) UNSIGNED,
-titulo VARCHAR(30) NOT NULL,
-slug VARCHAR(30) NOT NULL,
-descricao VARCHAR(100) NOT NULL,
+titulo VARCHAR(40) NOT NULL,
+slug VARCHAR(200) NOT NULL,
+descricao VARCHAR(800) NOT NULL,
 keywords  VARCHAR(50) NOT NULL,
-conteudo  VARCHAR(400) NOT NULL,
-dataHora TIMESTAMP NOT NULL,
+conteudo  VARCHAR(2500) NOT NULL,
+dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY fk_user(user_id)
    REFERENCES julio_users(user_id)
 
