@@ -93,7 +93,7 @@ header("location:../index.php");
     </div>
     </div>
   </main>
-     </body>"
+     </body>
 
 <!-- Page Footer -->
 <footer class="page-footer indigo callToFront">

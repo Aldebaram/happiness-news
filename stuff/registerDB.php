@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
       <span class=\"card-title sombra\">Register</span>
     </div>
     <div class=\"card-content\">
-    <img src=\"" . $url . "\" class=\"circle\" style=\"margin:height: 100px; width: 100px;\" />
+    <img src=\"" . $url . "\" class=\"circle\" style=\"height: 100px; width: 100px;\" />
     <div class=\"row\">
         <div class=\"input-field col s6\">
           <i class=\"material-icons prefix\">account_circle</i>

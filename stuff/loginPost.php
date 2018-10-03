@@ -103,7 +103,7 @@ echo "
     <div class=\"card-content\">
     <span class=\"card-title\">Login Successful!</span>
     <div class=\"row\">
-    <img src=\"$avatar\" class=\"circle\" style=\"margin:height: 100px; width: 100px;\" />
+    <img src=\"$avatar\" class=\"circle\" style=\"height: 100px; width: 100px;\" />
     <h4>$user</h4>
 </a>
 
