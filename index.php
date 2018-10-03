@@ -1,6 +1,110 @@
 <!DOCTYPE html>
 <?php
+include 'stuff/datalogin.php';
+
 session_start();
+$page = $_GET["page"]; // gets the page number
+$index = $page * 3;  // update the idex to load the posts
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+
+$getPosts = "SELECT id,t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,login,avatar FROM julio_noticias t1 INNER JOIN julio_users t2 ON t1.user_id = t2.user_id ORDER BY datahora DESC;";
+if ($resultado = $conn->query($getPosts)) {
+      if ( $resultado->num_rows > 0 ) {
+      $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+
+      if(isset($rows[0+$index]["id"])){
+      $post_id[0+$index] = $rows[0+$index]["id"];
+      $title[0+$index] = $rows[0+$index]["titulo"];
+      $creator_id[0+$index] = $rows[0+$index]["user_id"];
+      $slug[0+$index] = $rows[0+$index]["slug"];
+      $descricao[0+$index] = $rows[0+$index]["descricao"];
+      $keywords[0+$index] = $rows[0+$index]["keywords"];
+      $conteudo[0+$index] = $rows[0+$index]["conteudo"];
+      $datahora[0+$index] = $rows[0+$index]["datahora"];
+      $creator_name[0+$index] = $rows[0+$index]["login"];
+      $creator_avatar[0+$index] = $rows[0+$index]["avatar"];
+
+      $card1 = '<div class="carousel-item">
+        <div class="card grey lighten-5 medium hoverable">
+            <div class="card-content">
+              <span class="card-title">'.$title[0+$index].'</span>
+              <a>By: '.$creator_name[0+$index].'</a><a class="right">'.$datahora[0+$index].'</a>
+            <p class="">'.$descricao[0+$index].'</p>
+          </div>
+          <div class="card-action">
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[0+$index].'">View Post</a>
+          </div>
+        </div>
+      </div>';
+
+}else{
+  $no_results = true;
+}
+
+      if(isset($rows[1+$index]["id"])){
+      $post_id[1+$index] = $rows[1+$index]["id"];
+      $title[1+$index] = $rows[1+$index]["titulo"];
+      $creator_id[1+$index] = $rows[1+$index]["user_id"];
+      $slug[1+$index] = $rows[1+$index]["slug"];
+      $descricao[1+$index] = $rows[1+$index]["descricao"];
+      $keywords[1+$index] = $rows[1+$index]["keywords"];
+      $conteudo[1+$index] = $rows[1+$index]["conteudo"];
+      $datahora[1+$index] = $rows[1+$index]["datahora"];
+      $creator_name[1+$index] = $rows[1+$index]["login"];
+      $creator_avatar[1+$index] = $rows[1+$index]["avatar"];
+
+      $card2 = '<div class="carousel-item">
+        <div class="card grey lighten-5 medium hoverable">
+            <div class="card-content">
+              <span class="card-title">'.$title[1+$index].'</span>
+              <a>By: '.$creator_name[1+$index].'</a><a class="right">'.$datahora[1+$index].'</a>
+            <p class="">'.$descricao[1+$index].'</p>
+          </div>
+          <div class="card-action">
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[1+$index].'">View Post</a>
+          </div>
+        </div>
+      </div>';
+}
+      if(isset($rows[2+$index]["id"])){
+      $post_id[2+$index] = $rows[2+$index]["id"];
+      $title[2+$index] = $rows[2+$index]["titulo"];
+      $creator_id[2+$index] = $rows[2+$index]["user_id"];
+      $slug[2+$index] = $rows[2+$index]["slug"];
+      $descricao[2+$index] = $rows[2+$index]["descricao"];
+      $keywords[2+$index] = $rows[2+$index]["keywords"];
+      $conteudo[2+$index] = $rows[2+$index]["conteudo"];
+      $datahora[2+$index] = $rows[2+$index]["datahora"];
+      $creator_name[2+$index] = $rows[2+$index]["login"];
+      $creator_avatar[2+$index] = $rows[2+$index]["avatar"];
+
+      $card3 = '<div class="carousel-item">
+        <div class="card grey lighten-5 medium hoverable">
+            <div class="card-content">
+              <span class="card-title">'.$title[2+$index].'</span>
+              <a>By: '.$creator_name[2+$index].'</a><a class="right">'.$datahora[2+$index].'</a>
+            <p class="">'.$descricao[2+$index].'</p>
+          </div>
+          <div class="card-action">
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[2+$index].'">View Post</a>
+          </div>
+        </div>
+      </div>';
+      $finish = false;
+}else{
+  $finish = true;
+}
+    }
+
+  }
+
+$conn->close();
 
 ?>
  <html>
@@ -12,7 +116,6 @@ session_start();
      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
      <!--Import custom.css-->
      <link type="text/css" rel="stylesheet" href="css/custom.css"  media="screen,projection"/>
-
 
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -54,38 +157,77 @@ session_start();
 
 
 <!-- Page Body -->
-<body>
-
 <main>
+  <br>
 
-<div class="row">
-  <div class="container s12">
-        <h1>hello</h1>
-  </div>
+    <div class="container" >
+
+      <div class="carousel">
+
+        <?php
+        // load the cards with the posts
+        echo $card1;
+        echo $card2;
+        echo $card3;
+
+        ?>
 
 
-  </div>
-
+<br>
+    </div>
+<br>
+  <div class="divider"></div>
+<br>
+    <ul class="pagination center">
+<?php
+if($page>0){
+    echo '<li class="waves-effect"><a href="?page='.($page-1).'"><i class="material-icons">chevron_left</i></a></li>';
+}
+echo '<a class="black-text">Page '.$page.'</a>';
+if($finish==false){
+  echo  '<li class="waves-effect"><a href="?page='.($page+1).'"><i class="material-icons">chevron_right</i></a></li>';
+}
+?>
+    </ul>
+    </div>
+    </div>
 </main>
-   </body>
+
+
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+
+
 
 
 
 <!-- Page Footer -->
 <footer class="page-footer indigo callToFront">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">Placeholder.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
- </html>
+             <div class="container">
+               <div class="row">
+                 <div class="col l6 s12">
+                   <h5 class="white-text">Footer Content</h5>
+                   <p class="grey-text text-lighten-4">Placeholder.</p>
+                 </div>
+                 <div class="col l4 offset-l2 s12">
+                   <h5 class="white-text">Links</h5>
+                   <ul>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+</footer>
+           <!-- Load materialize javascript-->
+           <script type="text/javascript" src="../js/materialize.min.js"></script>
+           <!-- Load myjavascript-->
+           <script type="text/javascript" src="../js/script.js"></script>
+</html>
