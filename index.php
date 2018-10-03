@@ -45,9 +45,20 @@ if ($resultado = $conn->query($getPosts)) {
           </div>
         </div>
       </div>';
-
+      $finish = false;
 }else{
-  $no_results = true;
+  $card1 = '<div class="carousel-item">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
+  $finish = true;
 }
 
       if(isset($rows[1+$index]["id"])){
@@ -74,6 +85,8 @@ if ($resultado = $conn->query($getPosts)) {
           </div>
         </div>
       </div>';
+}else{
+  $finish = true;
 }
       if(isset($rows[2+$index]["id"])){
       $post_id[2+$index] = $rows[2+$index]["id"];
@@ -141,6 +154,8 @@ $conn->close();
      <div class="nav-wrapper indigo">
        <a href="index.php" class="brand-logo">Happy News</a>
        <ul id="nav-mobile" class="right ">
+       <>
+         <li><a href="sass.html"><i class="material-icons">search</i></a></li>
          <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
          <li><a href="stuff/logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
        </ul>
@@ -230,7 +245,7 @@ if($finish==false){
              </div>
 </footer>
            <!-- Load materialize javascript-->
-           <script type="text/javascript" src="../js/materialize.min.js"></script>
+           <script type="text/javascript" src="js/materialize.min.js"></script>
            <!-- Load myjavascript-->
-           <script type="text/javascript" src="../js/script.js"></script>
+           <script type="text/javascript" src="js/script.js"></script>
 </html>
