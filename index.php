@@ -4,6 +4,9 @@ include 'stuff/datalogin.php';
 
 session_start();
 $page = $_GET["page"]; // gets the page number
+if($page==""){
+  $page=0;
+}
 $index = $page * 3;  // update the idex to load the posts
 
 // Create connection
@@ -31,7 +34,7 @@ if ($resultado = $conn->query($getPosts)) {
       $creator_avatar[0+$index] = $rows[0+$index]["avatar"];
 
       $card1 = '<div class="carousel-item">
-        <div class="card grey lighten-5 medium hoverable">
+        <div class="card card-home grey lighten-5 medium hoverable">
             <div class="card-content">
               <span class="card-title">'.$title[0+$index].'</span>
               <a>By: '.$creator_name[0+$index].'</a><a class="right">'.$datahora[0+$index].'</a>
@@ -60,7 +63,7 @@ if ($resultado = $conn->query($getPosts)) {
       $creator_avatar[1+$index] = $rows[1+$index]["avatar"];
 
       $card2 = '<div class="carousel-item">
-        <div class="card grey lighten-5 medium hoverable">
+        <div class="card card-home grey lighten-5 medium hoverable">
             <div class="card-content">
               <span class="card-title">'.$title[1+$index].'</span>
               <a>By: '.$creator_name[1+$index].'</a><a class="right">'.$datahora[1+$index].'</a>
@@ -85,7 +88,7 @@ if ($resultado = $conn->query($getPosts)) {
       $creator_avatar[2+$index] = $rows[2+$index]["avatar"];
 
       $card3 = '<div class="carousel-item">
-        <div class="card grey lighten-5 medium hoverable">
+        <div class="card card-home grey lighten-5 medium hoverable">
             <div class="card-content">
               <span class="card-title">'.$title[2+$index].'</span>
               <a>By: '.$creator_name[2+$index].'</a><a class="right">'.$datahora[2+$index].'</a>
