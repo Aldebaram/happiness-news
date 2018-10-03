@@ -1,11 +1,68 @@
 body {
   display: flex;
-  min-height: 100vh;
+   min-height: 100vh;
   flex-direction: column;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+
+html, body, p { margin: 0; padding: 0; font-family: sans-serif;}
+
+.ellipsis {
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+	line-height: 25px;
+	margin: 20px;
+	border: 5px solid #FFF; }
+
+.ellipsis:before {
+	content:"";
+	float: left;
+	width: 5px; height: 200px; }
+
+.ellipsis > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px; }
+
+.ellipsis:after {
+	content: "\02026";
+
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+
+	float: right; position: relative;
+	top: -25px; left: 100%;
+	width: 7em; margin-left: -7em;
+	padding-right: 5px;
+
+	text-align: right;
+
+  background-size: 100% 100%;
+  /* 1706x1 image, gradient for IE9. Transparent at 0% -> white at 15% -> white at 100%.*/
+  }
+
+.ellipsis a { position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	overflow: hidden; text-indent: -9999px; }
+
+
+
+.carousel .carousel-item {
+width:300px !important;
+height: 400px !important;
+
+}
+
+.card{
+  width:300px !important;
+  height: 380px !important;
 }
 
 .extend {
@@ -28,6 +85,7 @@ main {
 .wrapper{
   position:relative;
 }
+
 .bottom{
   position:absolute; bottom:0;
 }
