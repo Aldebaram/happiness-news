@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dist: 0,
     shift: 0,
     padding: 20,
-    numVisible: 3,
-    indicators: true
+    numVisible: 3
   });
 
   const textNeedCount = document.querySelector('#content');
