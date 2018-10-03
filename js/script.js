@@ -10,5 +10,17 @@ function loading() {
 
 
 // initialize materialize character count
-const textNeedCount = document.querySelector('#content');
-const textNeedCountInstance = new M.CharacterCounter(textNeedCount);
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.carousel');
+  var instance = M.Carousel.init(elems, {
+    dist: 0,
+    shift: 0,
+    padding: 20,
+    numVisible: 3,
+    indicators: true
+  });
+
+  const textNeedCount = document.querySelector('#content');
+  const textNeedCountInstance = new M.CharacterCounter(textNeedCount);
+
+});
