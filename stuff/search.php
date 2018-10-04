@@ -49,7 +49,7 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[0+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[0+$index].'">View Post</a>
+            <a class="black-text" href="viewPost.php?post='.$post_id[0+$index].'">View Post</a>
           </div>
         </div>
       </div>';
@@ -89,7 +89,7 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[1+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[1+$index].'">View Post</a>
+            <a class="black-text" href="viewPost.php?post='.$post_id[1+$index].'">View Post</a>
           </div>
         </div>
       </div>';
@@ -127,7 +127,7 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[2+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[2+$index].'">View Post</a>
+            <a class="black-text" href="viewPost.php?post='.$post_id[2+$index].'">View Post</a>
           </div>
         </div>
       </div>';
@@ -287,25 +287,25 @@ if($finish==false){
 
 
 
-<!-- Page Footer -->
-<footer class="page-footer indigo callToFront">
-             <div class="container">
-               <div class="row">
-                 <div class="col l6 s12">
-                   <h5 class="white-text">Footer Content</h5>
-                   <p class="grey-text text-lighten-4">Placeholder.</p>
+    <!-- Page Footer -->
+    <footer class="page-footer indigo callToFront">
+                 <div class="container">
+                   <div class="row">
+                     <div class="col l6 s12">
+                       <h5 class="white-text">Happy News!</h5>
+                       <p class="grey-text text-lighten-4">You can read more about this website </p><a href="https://github.com/Aldebaram/happiness-news" class="white-text underline" >Here</a>
+                     </div>
+                     <div class="col l4 offset-l2 s12">
+                       <h5 class="white-text">My Github</h5>
+                       <ul>
+                         <li><a class="grey-text text-lighten-3" href="https://github.com/Aldebaram">Aldebaram</a></li>
+                       </ul>
+                     </div>
+                   </div>
                  </div>
-                 <div class="col l4 offset-l2 s12">
-                   <h5 class="white-text">Links</h5>
-                   <ul>
-                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-</footer>
-           <!-- Load materialize javascript-->
-           <script type="text/javascript" src="../js/materialize.min.js"></script>
-           <!-- Load myjavascript-->
-           <script type="text/javascript" src="../js/script.js"></script>
+    </footer>
+    <!-- Load materialize javascript-->
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- Load myjavascript-->
+    <script type="text/javascript" src="../js/script.js"></script>
 </html>

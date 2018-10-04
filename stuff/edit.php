@@ -89,7 +89,7 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
                   <input id="tags" name="tags" type="text" class="validate black-text" data-length="50" value="'.$keywords.'">
                   <label for="tags">Tags</label>
                 </div>
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12">
                       <textarea id="content" name="content" class="materialize-textarea" data-length="2500">'.$conteudo.'</textarea>
                       <label for="content">Content</label>
                 </div>
@@ -176,26 +176,25 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
 
 
 
-
 <!-- Page Footer -->
 <footer class="page-footer indigo callToFront">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">Placeholder.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
-        <!-- Load materialize javascript-->
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-        <!-- Load myjavascript-->
-        <script type="text/javascript" src="../js/script.js"></script>
- </html>
+             <div class="container">
+               <div class="row">
+                 <div class="col l6 s12">
+                   <h5 class="white-text">Happy News!</h5>
+                   <p class="grey-text text-lighten-4">You can read more about this website </p><a href="https://github.com/Aldebaram/happiness-news" class="white-text underline" >Here</a>
+                 </div>
+                 <div class="col l4 offset-l2 s12">
+                   <h5 class="white-text">My Github</h5>
+                   <ul>
+                     <li><a class="grey-text text-lighten-3" href="https://github.com/Aldebaram">Aldebaram</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+</footer>
+<!-- Load materialize javascript-->
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+<!-- Load myjavascript-->
+<script type="text/javascript" src="../js/script.js"></script>
+</html>

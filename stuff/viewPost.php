@@ -59,11 +59,10 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
         <br>
       <div class="card hoverable wrapper">
         <div class="card-content">
-        <span class="card-title">Post.</span>
         <img src="'.$creator_avatar.'" class="circle right" style="height: 100px; width: 100px;" />
-        <h4>By: '.$creator_name.'</h4>
+        <span class="card-title">'.$title.'</span>
+        <h5>By: '.$creator_name.'</h5>
         <div class="row">
-         <h3>'.$title.'</h3>
          <br>
          <div class="card blue-grey">
                  <div class="card-content white-text">
@@ -99,11 +98,10 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
     <div class="container s12" >
   <div class="card hoverable wrapper">
     <div class="card-content">
-    <span class="card-title">Post.</span>
     <img src="'.$creator_avatar.'" class="circle right" style="height: 100px; width: 100px;" />
-    <h4>By: '.$creator_name.'</h4>
+    <span class="card-title">'.$title.'</span>
+    <h5>By: '.$creator_name.'</h5>
     <div class="row">
-     <h3>'.$title.'</h3>
      <br>
      <div class="card blue-grey">
              <div class="card-content white-text">
@@ -189,23 +187,23 @@ echo $body;
 
 <!-- Page Footer -->
 <footer class="page-footer indigo callToFront">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">Placeholder.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
-        <!-- Load materialize javascript-->
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-        <!-- Load myjavascript-->
-        <script type="text/javascript" src="../js/script.js"></script>
- </html>
+             <div class="container">
+               <div class="row">
+                 <div class="col l6 s12">
+                   <h5 class="white-text">Happy News!</h5>
+                   <p class="grey-text text-lighten-4">You can read more about this website </p><a href="https://github.com/Aldebaram/happiness-news" class="white-text underline" >Here</a>
+                 </div>
+                 <div class="col l4 offset-l2 s12">
+                   <h5 class="white-text">My Github</h5>
+                   <ul>
+                     <li><a class="grey-text text-lighten-3" href="https://github.com/Aldebaram">Aldebaram</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+</footer>
+<!-- Load materialize javascript-->
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+<!-- Load myjavascript-->
+<script type="text/javascript" src="../js/script.js"></script>
+</html>
