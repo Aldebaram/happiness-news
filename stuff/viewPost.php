@@ -4,17 +4,33 @@ session_start();
 include 'dblogin.php';
 
 // get the information from GET
+if(isset($_GET["post"])){
 $post_id = $_GET["post"];
+}else {
+  header("location:../index.php"); //redirect to home if no post id is found
+}
 //get the information from Session
-$user_id = $_SESSION['user_id'];
-$avatar = $_SESSION['avatar'];
-$user = $_SESSION['user'];
+if(isset($_SESSION['user_id'])){
+  $user_id = $_SESSION['user_id'];
+}else {
+  $user_id="";
+}
+
+if(isset($_SESSION['avatar'])){
+  $avatar = $_SESSION['avatar'];
+}
+
+if(isset($_SESSION['user'])){
+  $user = $_SESSION['user'];
+}
+
+
 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-//get posrt information
+//get post information
 $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,login,avatar FROM julio_noticias t1 INNER JOIN julio_users t2 ON t1.user_id = t2.user_id WHERE id='$post_id';";
       if ($resultado = $conn->query($getPost)) {
       $row = $resultado->fetch_assoc();
@@ -27,6 +43,8 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
       $datahora = $row["datahora"];
       $creator_name = $row["login"];
       $creator_avatar = $row["avatar"];
+      if(isset($user_id)){
+        if($user_id == $creator_id){
       $body = '<!-- Page Body -->
       <body>
 
@@ -34,6 +52,11 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
 
       <div class="row">
         <div class="container s12" >
+        <br>
+        <a href="edit.php?post='.$post_id.'" class="waves-effect indigo darken-1 waves-light btn"><i class="material-icons left">create</i>Edit</a>
+        <a>     </a>
+        <a href="delete.php?post='.$post_id.'" class="waves-effect red waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+        <br>
       <div class="card hoverable wrapper">
         <div class="card-content">
         <span class="card-title">Post.</span>
@@ -48,8 +71,6 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
                    <p>'.$descricao.'.</p>
                  </div>
             </div>
-
-
           <br>
          <a class="black-text">Content: '.$conteudo.'</a>
          <div class="bottom">
@@ -58,7 +79,8 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
            <a class="black-text">Tags: '.$keywords.'</a>
            <br>
            <a>Created at '.$datahora.'</a>
-         </div>
+           <br>
+          </div>
         </div>
        </div>
       </div>
@@ -67,8 +89,48 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
   </main>
 </body>
 ';
-    }
+}else{
+  $body = '<!-- Page Body -->
+  <body>
 
+  <main>
+
+  <div class="row">
+    <div class="container s12" >
+  <div class="card hoverable wrapper">
+    <div class="card-content">
+    <span class="card-title">Post.</span>
+    <img src="'.$creator_avatar.'" class="circle right" style="height: 100px; width: 100px;" />
+    <h4>By: '.$creator_name.'</h4>
+    <div class="row">
+     <h3>'.$title.'</h3>
+     <br>
+     <div class="card blue-grey">
+             <div class="card-content white-text">
+               <span class="card-title">'.$slug.'</span>
+               <p>'.$descricao.'.</p>
+             </div>
+        </div>
+      <br>
+     <a class="black-text">Content: '.$conteudo.'</a>
+     <div class="bottom">
+     <br>
+       <br>
+       <a class="black-text">Tags: '.$keywords.'</a>
+       <br>
+       <a>Created at '.$datahora.'</a>
+       <br>
+      </div>
+    </div>
+   </div>
+  </div>
+  </div>
+  </div>
+  </main>
+  </body>
+  ';
+}}
+}
   $conn->close();
 ?>
 
@@ -86,6 +148,7 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    </head>
+
 <?php
  $unlogbar = '<!-- Materialize Navbar -->
  <nav class="callToFront">
