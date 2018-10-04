@@ -31,7 +31,7 @@ header("location:../index.php");//redirect to home if theres no login in session
  $unlogbar = '<!-- Materialize Navbar -->
  <nav class="callToFront">
     <div class="nav-wrapper indigo">
-      <a href="../index.php" class="brand-logo">Happy News</a>
+      <a href="../index.php" class="brand-logo left">Happy News</a>
       <ul id="nav-mobile" class="right ">
         <li><a href="login.php">Login<i class="material-icons right">description</i></a></li>
         <li><a href="register.php">Register<i class="material-icons right">create</i></a></li>
@@ -42,7 +42,7 @@ header("location:../index.php");//redirect to home if theres no login in session
   $logbar = '<!-- Materialize Navbar -->
   <nav class="callToFront">
      <div class="nav-wrapper indigo">
-       <a href="../index.php" class="brand-logo">Happy News</a>
+       <a href="../index.php" class="brand-logo left">Happy News</a>
        <ul id="nav-mobile" class="right ">
          <li><a href="create.php">Create New!<i class="material-icons right">drafts</i></a></li>
          <li><a href="logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
@@ -82,22 +82,22 @@ header("location:../index.php");//redirect to home if theres no login in session
   <div class="row">
   <form id="form" class="col s12" action="createPost.php" enctype="multipart/form-data" method="POST" >
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <i class="material-icons prefix">account_circle</i>
         <input id="title" name="title" type="text" class="validate black-text" data-length="40">
         <label for="title">Title</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <i class="material-icons prefix">assignment</i>
         <input id="slug" name="slug" type="text" class="validate black-text" data-length="200">
         <label for="slug">Slug</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <i class="material-icons prefix">comment</i>
         <input id="desc" name="desc" type="text" class="validate black-text" data-length="800">
         <label for="desc">Description</label>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s12 m6">
         <i class="material-icons prefix">bookmark_border</i>
         <input id="tags" name="tags" type="text" class="validate black-text" data-length="50">
         <label for="tags">Tags</label>

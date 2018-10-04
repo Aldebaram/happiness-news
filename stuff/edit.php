@@ -69,27 +69,27 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
             <form id="form" class="col s12" action="editPost.php" enctype="multipart/form-data" method="POST" >
             <input type="hidden" name="post" value="'.($post_id).'" />
               <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                   <i class="material-icons prefix">account_circle</i>
                   <input id="title" name="title" type="text" class="validate black-text" data-length="40" value="'.$title.'">
                   <label for="title">Title</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                   <i class="material-icons prefix">assignment</i>
                   <input id="slug" name="slug" type="text" class="validate black-text" data-length="200" value="'.$slug.'">
                   <label for="slug">Slug</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                   <i class="material-icons prefix">comment</i>
                   <input id="desc" name="desc" type="text" class="validate black-text" data-length="800" value="'.$descricao.'">
                   <label for="desc">Description</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                   <i class="material-icons prefix">bookmark_border</i>
                   <input id="tags" name="tags" type="text" class="validate black-text" data-length="50" value="'.$keywords.'">
                   <label for="tags">Tags</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6">
                       <textarea id="content" name="content" class="materialize-textarea" data-length="2500">'.$conteudo.'</textarea>
                       <label for="content">Content</label>
                 </div>
@@ -140,7 +140,7 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
  $unlogbar = '<!-- Materialize Navbar -->
  <nav class="callToFront">
     <div class="nav-wrapper indigo">
-      <a href="../index.php" class="brand-logo">Happy News</a>
+      <a href="../index.php" class="brand-logo left">Happy News</a>
       <ul id="nav-mobile" class="right ">
         <li><a href="login.php">Login<i class="material-icons right">description</i></a></li>
         <li><a href="register.php">Register<i class="material-icons right">create</i></a></li>
@@ -151,7 +151,7 @@ $getPost = "SELECT t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,l
   $logbar = '<!-- Materialize Navbar -->
   <nav class="callToFront">
      <div class="nav-wrapper indigo">
-       <a href="../index.php" class="brand-logo">Happy News</a>
+       <a href="../index.php" class="brand-logo left">Happy News</a>
        <ul id="nav-mobile" class="right ">
          <li><a href="create.php">Create New!<i class="material-icons right">drafts</i></a></li>
          <li><a href="logout.php">Logout<i class="material-icons right">info_outline</i></a></li>

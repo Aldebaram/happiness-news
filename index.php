@@ -19,6 +19,12 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+//As I cant use any kind of loop I get all the posts from the database and load 3 by page
+//the starting page is 0 and the loading index is (page * 3) so its counts the posts correctly
+//so on page 0  it is post1[0],post2[1],post3[2] (index is 0)
+//and page 1 it is post1[3],post2[4],post3[5]    (index is 3)
+//and is goes by that logic to show all the posts without using any kind of loop
+// this is also used on the search page
 $getPosts = "SELECT id,t1.user_id,titulo,slug,descricao,keywords,conteudo,datahora,login,avatar FROM julio_noticias t1 INNER JOIN julio_users t2 ON t1.user_id = t2.user_id ORDER BY datahora DESC;";
 if ($resultado = $conn->query($getPosts)) {
       if ( $resultado->num_rows > 0 ) {
@@ -166,7 +172,7 @@ $conn->close();
  $unlogbar = '<!-- Materialize Navbar -->
  <nav class="callToFront">
     <div class="nav-wrapper indigo">
-      <a href="index.php" class="brand-logo">Happy News</a>
+      <a href="index.php" class="brand-logo left">Happy News</a>
       <ul id="nav-mobile" class="right ">
 	    <li><a href="stuff/search.php?page=0&search=">Search<i class="material-icons right">search</i></a></li>
         <li><a href="stuff/login.php">Login<i class="material-icons right">description</i></a></li>
@@ -178,7 +184,7 @@ $conn->close();
   $logbar = '<!-- Materialize Navbar -->
   <nav class="callToFront">
      <div class="nav-wrapper indigo">
-       <a href="index.php" class="brand-logo">Happy News</a>
+       <a href="index.php" class="brand-logo left">Happy News</a>
        <ul id="nav-mobile" class="right ">
          <li><a href="stuff/search.php?page=0&search=">Search<i class="material-icons right">search</i></a></li>
 		 <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
