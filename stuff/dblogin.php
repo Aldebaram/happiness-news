@@ -3,7 +3,7 @@
 $servername = "127.0.0.1";
 $username = "root";
 $password = "happynews";
-$dbname = "myDB";
+$dbname = "julio_tables";
 
 //connection snippets
 //$conn = new mysqli($servername, $username, $password, $dbname);
