@@ -2,10 +2,12 @@
 <?php
 session_start();
 
-if($_SESSION['login']==true){
+if(isset($_SESSION['login'])){
+if($_SESSION['login']==true){// check if user is logged
 header("location:../index.php");
 }else{
  // keep the flow
+}
 }
 ?>
  <html>
@@ -49,10 +51,14 @@ header("location:../index.php");
 
 
 
-   if($_SESSION['login']==true){
+ if(isset($_SESSION['login'])){
+   if($_SESSION['login']==true){// check if user is logged
    echo $logbar; //shows the navbar if theres a user on session.
    }else{
     echo $unlogbar; //shows the bar is no user in session.
+   }
+   }else{
+	   echo $unlogbar; //shows the bar is no user in session.
    }
 
 ?>
@@ -66,7 +72,8 @@ header("location:../index.php");
 
 <div class="row">
   <div class="container s12" >
-
+<br>
+<br>
 
 <div class="card hoverable">
   <div class="card-image">

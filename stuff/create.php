@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if($_SESSION['login']==false){//check if user is logged
-header("location:../index.php");
+if(isset($_SESSION['login'])){
+if($_SESSION['login']==true){// check if user is logged
+//keep the flow
 }else{
- // keep the flow
+header("location:../index.php");//redirect to home is login is false
+}
+}else{
+header("location:../index.php");//redirect to home if theres no login in session
 }
 ?>
  <html>
@@ -80,26 +84,26 @@ header("location:../index.php");
     <div class="row">
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="title" name="title" type="text" class="validate black-text">
+        <input id="title" name="title" type="text" class="validate black-text" data-length="40">
         <label for="title">Title</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">assignment</i>
-        <input id="slug" name="slug" type="text" class="validate black-text">
+        <input id="slug" name="slug" type="text" class="validate black-text" data-length="200">
         <label for="slug">Slug</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">comment</i>
-        <input id="desc" name="desc" type="text" class="validate black-text">
+        <input id="desc" name="desc" type="text" class="validate black-text" data-length="800">
         <label for="desc">Description</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">bookmark_border</i>
-        <input id="tags" name="tags" type="text" class="validate black-text">
+        <input id="tags" name="tags" type="text" class="validate black-text" data-length="50">
         <label for="tags">Tags</label>
       </div>
       <div class="input-field col s12">
-            <textarea id="content" name="content" class="materialize-textarea" data-length="2000"></textarea>
+            <textarea id="content" name="content" class="materialize-textarea" data-length="2500"></textarea>
             <label for="content">Content</label>
       </div>
     </div>

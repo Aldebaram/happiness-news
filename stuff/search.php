@@ -3,11 +3,16 @@
 include 'datalogin.php';
 
 session_start();
+if(isset($_GET["search"]) && isset($_GET["page"])){
 $page = $_GET["page"]; // gets the page number
 $search = $_GET["search"]; // gets the page number
 
 if($page==""){
   $page=0;
+}
+}else{
+	$page = 0;
+	$search="";
 }
 $index = $page * 3;  // update the idex to load the posts
 
@@ -44,13 +49,24 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[0+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="viewPost.php?post='.$post_id[0+$index].'">View Post</a>
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[0+$index].'">View Post</a>
           </div>
         </div>
       </div>';
-
+      $finish = false;
 }else{
-  $no_results = true;
+  $card1 = '<div class="carousel-item">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
+  $finish = true;
 }
 
       if(isset($rows[1+$index]["id"])){
@@ -73,10 +89,23 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[1+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="/viewPost.php?post='.$post_id[1+$index].'">View Post</a>
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[1+$index].'">View Post</a>
           </div>
         </div>
       </div>';
+}else{
+  $card2 = '<div class="carousel-item hide">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
+  $finish = true;
 }
       if(isset($rows[2+$index]["id"])){
       $post_id[2+$index] = $rows[2+$index]["id"];
@@ -98,12 +127,23 @@ if ($resultado = $conn->query($getPosts)) {
             <p class="">'.$descricao[2+$index].'</p>
           </div>
           <div class="card-action">
-            <a class="black-text" href="viewPost.php?post='.$post_id[2+$index].'">View Post</a>
+            <a class="black-text" href="stuff/viewPost.php?post='.$post_id[2+$index].'">View Post</a>
           </div>
         </div>
       </div>';
       $finish = false;
 }else{
+  $card3 = '<div class="carousel-item hide">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
   $finish = true;
 }
     }
@@ -148,7 +188,20 @@ $conn->close();
          <li><a href="logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
        </ul>
      </div>
-   </nav>';
+   </nav>
+    <nav>
+    <div class="nav-wrapper indigo lighten-1">
+      <form action="search.php" method="GET">
+        <div class="input-field">
+          <input id="search" type="search" name="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+		  <input type="hidden" name="page" value="'.($page).'" />
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+   ';
 
 
 
@@ -172,9 +225,16 @@ $conn->close();
 
         <?php
         // load the cards with the posts
-        echo $card1;
-        echo $card2;
-        echo $card3;
+        if(isset($card1)){
+		echo $card1;
+        }
+		if(isset($card2)){
+		echo $card2;
+        }
+        
+		if(isset($card3)){
+		echo $card3;
+		}
 
         ?>
 

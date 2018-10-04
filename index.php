@@ -3,12 +3,15 @@
 include 'stuff/datalogin.php';
 
 session_start();
+if(isset($_GET["page"])){
 $page = $_GET["page"]; // gets the page number
 if($page==""){
   $page=0;
+}}else{
+	$page = 0;
 }
 $index = $page * 3;  // update the idex to load the posts
-
+$finish = true;
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -86,6 +89,17 @@ if ($resultado = $conn->query($getPosts)) {
         </div>
       </div>';
 }else{
+  $card2 = '<div class="carousel-item hide">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
   $finish = true;
 }
       if(isset($rows[2+$index]["id"])){
@@ -114,6 +128,17 @@ if ($resultado = $conn->query($getPosts)) {
       </div>';
       $finish = false;
 }else{
+  $card3 = '<div class="carousel-item hide">
+    <div class="card card-home grey lighten-5 medium hoverable">
+        <div class="card-content">
+          <span class="card-title">No More Results</span>
+          <a></a><a class="right"></a>
+        <p class=""></p>
+      </div>
+    </div>
+  </div>';
+
+
   $finish = true;
 }
     }
@@ -143,6 +168,7 @@ $conn->close();
     <div class="nav-wrapper indigo">
       <a href="index.php" class="brand-logo">Happy News</a>
       <ul id="nav-mobile" class="right ">
+	    <li><a href="stuff/search.php">Search<i class="material-icons right">search</i></a></li>
         <li><a href="stuff/login.php">Login<i class="material-icons right">description</i></a></li>
         <li><a href="stuff/register.php">Register<i class="material-icons right">create</i></a></li>
       </ul>
@@ -154,20 +180,22 @@ $conn->close();
      <div class="nav-wrapper indigo">
        <a href="index.php" class="brand-logo">Happy News</a>
        <ul id="nav-mobile" class="right ">
-       <>
-         <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-         <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
+         <li><a href="stuff/search.php?page=0&search=">Search<i class="material-icons right">search</i></a></li>
+		 <li><a href="stuff/create.php">Create New!<i class="material-icons right">drafts</i></a></li>
          <li><a href="stuff/logout.php">Logout<i class="material-icons right">info_outline</i></a></li>
        </ul>
      </div>
    </nav>';
 
 
-
+   if(isset($_SESSION['login'])){
    if($_SESSION['login']==true){// check if user is logged
    echo $logbar; //shows the navbar if theres a user on session.
    }else{
     echo $unlogbar; //shows the bar is no user in session.
+   }
+   }else{
+	   echo $unlogbar; //shows the bar is no user in session.
    }
 
 ?>
@@ -184,9 +212,16 @@ $conn->close();
 
         <?php
         // load the cards with the posts
-        echo $card1;
-        echo $card2;
-        echo $card3;
+        if(isset($card1)){
+		echo $card1;
+        }
+		if(isset($card2)){
+		echo $card2;
+        }
+        
+		if(isset($card3)){
+		echo $card3;
+        }
 
         ?>
 

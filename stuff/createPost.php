@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if($_SESSION['login']==false){//check if user is logged
-header("location:../index.php");
+session_start();
+if(isset($_SESSION['login'])){
+if($_SESSION['login']==true){// check if user is logged
+//keep the flow
 }else{
- // keep the flow
+header("location:../index.php");//redirect to home is login is false
+}
+}else{
+header("location:../index.php");//redirect to home if theres no login in session
 }
 include 'datalogin.php';
 

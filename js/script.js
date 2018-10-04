@@ -11,6 +11,7 @@ function loading() {
 
 // initialize materialize character count
 document.addEventListener('DOMContentLoaded', function() {
+
   var elems = document.querySelectorAll('.carousel');
   var instance = M.Carousel.init(elems, {
     dist: 0,
@@ -18,8 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
     padding: 20,
     numVisible: 3
   });
+  // Initialize the character counter on the create post form
+  const textCont = document.querySelector('#content');
+  const textContInstance = new M.CharacterCounter(textCont);
 
-  const textNeedCount = document.querySelector('#content');
-  const textNeedCountInstance = new M.CharacterCounter(textNeedCount);
+  const textTitle = document.querySelector('#title');
+  const textTitleInstance = new M.CharacterCounter(textTitle);
+
+  const textSlug = document.querySelector('#slug');
+  const textSlugInstance = new M.CharacterCounter(textSlug);
+
+  const textDesc = document.querySelector('#desc');
+  const textDescInstance = new M.CharacterCounter(textDesc);
+
+  const textTags = document.querySelector('#tags');
+  const textTagsInstance = new M.CharacterCounter(textTags);
+
+
 
 });

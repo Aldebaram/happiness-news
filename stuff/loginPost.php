@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if(isset($_SESSION['login'])){
 if($_SESSION['login']==true){// check if user is logged
 header("location:../index.php");
 }else{
  // keep the flow
+}
 }
 ?>
 

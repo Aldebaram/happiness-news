@@ -1,9 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['login'])){
 if($_SESSION['login']==true){// check if user is logged
 header("location:../index.php");
 }else{
  // keep the flow
+}
 }
 //MySQL Database Connect include 'datalogin.php';
 include 'datalogin.php';
@@ -26,8 +28,9 @@ if(isset($_POST['submit'])){
   $handle = fopen($filename, "r");
   $data = fread($handle, filesize($filename));
   $pvars   = array('image' => base64_encode($data));
-  $timeout = 30;
+  $timeout = 300;
   $curl    = curl_init();
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($curl, CURLOPT_URL, 'https://api.imgur.com/3/image.json');
   curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
   curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Client-ID ' . $client_id));
@@ -174,11 +177,15 @@ if(isset($_POST['submit'])){
 
 
 
-      if($_SESSION['login']==true){
-      echo $logbar; //shows the navbar if theres a user on session.
-      }else{
-       echo $unlogbar; //shows the bar is no user in session.
-      }
+ if(isset($_SESSION['login'])){
+   if($_SESSION['login']==true){// check if user is logged
+   echo $logbar; //shows the navbar if theres a user on session.
+   }else{
+    echo $unlogbar; //shows the bar is no user in session.
+   }
+   }else{
+	   echo $unlogbar; //shows the bar is no user in session.
+   }
 
    ?>
 
