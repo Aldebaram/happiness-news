@@ -168,7 +168,7 @@ $conn->close();
     <div class="nav-wrapper indigo">
       <a href="index.php" class="brand-logo">Happy News</a>
       <ul id="nav-mobile" class="right ">
-	    <li><a href="stuff/search.php">Search<i class="material-icons right">search</i></a></li>
+	    <li><a href="stuff/search.php?page=0&search=">Search<i class="material-icons right">search</i></a></li>
         <li><a href="stuff/login.php">Login<i class="material-icons right">description</i></a></li>
         <li><a href="stuff/register.php">Register<i class="material-icons right">create</i></a></li>
       </ul>

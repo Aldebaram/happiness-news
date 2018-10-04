@@ -177,7 +177,19 @@ $conn->close();
         <li><a href="register.php">Register<i class="material-icons right">create</i></a></li>
       </ul>
     </div>
-  </nav>';
+  </nav>
+  <nav>
+  <div class="nav-wrapper indigo lighten-1">
+    <form action="search.php" method="GET">
+      <div class="input-field">
+        <input id="search" type="search" name="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+    <input type="hidden" name="page" value="'.($page).'" />
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>';
 
   $logbar = '<!-- Materialize Navbar -->
   <nav class="callToFront">
