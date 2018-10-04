@@ -28,7 +28,7 @@ $user = $_SESSION['user'];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Create Post
-$insertPost = "INSERT INTO julio_noticias (user_id,titulo,slug,descricao,keywords,conteudo) VALUE ('$user_id','$title','$slug','$desc','$tags','$content')";
+$insertPost = "INSERT INTO julio_noticias (user_id,titulo,slug,descricao,keywords,conteudo) VALUE ('$user_id','$title','$slug','$desc','$tags','$content');";
       if ($conn->query($insertPost) === TRUE){
       $inserted = true;
       $post_id = $conn->insert_id;
