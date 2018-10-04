@@ -8,7 +8,7 @@ header("location:../index.php");
 }
 }
 //MySQL Database Connect include 'datalogin.php';
-include 'datalogin.php';
+include 'dblogin.php';
 //receive the register information.
 $user = $_POST['user'];
 $pass  = $_POST['password']; //as this is a project not intended for production I will not implement a hash to store de password

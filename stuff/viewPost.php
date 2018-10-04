@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include 'datalogin.php';
+include 'dblogin.php';
 
 // get the information from GET
 $post_id = $_GET["post"];

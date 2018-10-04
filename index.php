@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include 'stuff/datalogin.php';
+include 'stuff/dblogin.php';
 
 session_start();
 if(isset($_GET["page"])){
@@ -218,7 +218,7 @@ $conn->close();
 		if(isset($card2)){
 		echo $card2;
         }
-        
+
 		if(isset($card3)){
 		echo $card3;
         }

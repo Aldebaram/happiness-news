@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start();
-session_start();
 if(isset($_SESSION['login'])){
 if($_SESSION['login']==true){// check if user is logged
 //keep the flow
@@ -11,7 +10,7 @@ header("location:../index.php");//redirect to home is login is false
 }else{
 header("location:../index.php");//redirect to home if theres no login in session
 }
-include 'datalogin.php';
+include 'dblogin.php';
 
 // get the information from POST
 $title = $_POST['title'];

@@ -1,6 +1,6 @@
 <?php
 //MySQL Database Connect include 'datalogin.php';
-include 'datalogin.php';
+include 'dblogin.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

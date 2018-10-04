@@ -25,7 +25,7 @@ header("location:../index.php");
 
 
 <?php
-include 'datalogin.php'; // DB login info
+include 'dblogin.php'; // DB login info
 
 $user = $_POST['user'];
 $pass  = $_POST['password'];
